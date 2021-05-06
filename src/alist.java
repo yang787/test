@@ -9,7 +9,7 @@ size: The number of items in the list should be size.
 */
 
 
-public class alist<item> {
+public class alist<item> implements List61B<item> {
     private item[] items;
     private int size;
 
@@ -26,6 +26,16 @@ public class alist<item> {
         items = a;
     }
 
+    /** Inserts item into given position.*/
+    public void insert(item x, int position){
+        item[] newItems = (item[]) new Object[items.length+1];
+        System.arraycopy(items,0, newItems,0,position);
+        newItems[position] = x;
+        System.arraycopy(items, position, newItems, position +1, items.length-position);
+        items=newItems;
+        size+=1;
+    }
+
     /** Inserts X into the back of the list.
      * Instead of resize(size+factor), using resize(size*factor) would improve the memory performance*/
     public void addLast(item x){
@@ -35,10 +45,25 @@ public class alist<item> {
         items[size] = x;
         size += 1;
     }
+    /** Insert X into the front of the list.*/
+    public void addFirst(item x){
+        item[] newItems = (item[]) new Object[items.length+1];
+        System.arraycopy(items,0,newItems,1,items.length);
+        newItems[0] = x;
+        items = newItems;
+        size+=1;
+    }
 
     /**Return the item from the back of the list*/
     public item getLast(){
         return items[size-1];
+    }
+
+    /** Return the item at n position on the list
+     * position start from 0
+     */
+    public item get(int n){
+        return items[n];
     }
 
     /** Remove the last item of the list */
