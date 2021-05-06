@@ -29,4 +29,37 @@ public class alistTest {
 
     }
 
+    @Test
+    public void insert() {
+        alist<String> K = new alist<>();
+        K.addLast("Can");
+        K.addLast("insert");
+        K.addLast("a");
+        K.addLast("string");
+        K.insert("I",1);
+        String B = K.get(1);
+        assertEquals(5, K.getSize());
+        assertEquals("string", K.get(K.getSize()-1));
+    }
+
+    @Test
+    public void addFirst() {
+        alist<Integer> L = new alist<>();
+        L.addFirst(10);
+        L.addFirst(9);
+        L.addFirst(8);
+        L.addFirst(7);
+        L.addLast(0);
+        int B = L.get(1);
+        assertEquals(8, B);
+        assertEquals(5,L.getSize());
+    }
+
+    @Test
+    public void get() {
+    }
+
+    @Test
+    public void getSize() {
+    }
 }
